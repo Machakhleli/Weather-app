@@ -1,0 +1,17 @@
+@mixin boxSize($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin gridCenter($width, $height) {
+  display: grid;
+  place-items: center;
+  width: $width;
+  height: $height;
+}
+@mixin gridFlow($columns, $rows) {
+  display: grid;
+  grid-column: $columns;
+  grid-row: $rows;
+  gap: 1rem;
+}
