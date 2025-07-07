@@ -1,18 +1,18 @@
 #main-container {
   @include boxSize(100vw, 100vh);
   @include gridCenter(100vw, 100vh);
-  grid-template-columns: 4rem minmax(18.125rem, 1fr) 1fr;
-  grid-template-rows: 4rem max-content 1fr;
+  grid-template-columns: 64px 1fr 0.5fr;
+  grid-template-rows: 64px 1fr 64px;
   z-index: 1;
   // background-color: rgb(203, 207, 133);
   #main-section {
     @include boxSize(100%, 100%);
     @include gridFlow(2, 2);
-    background-color: red;
+    background-color: rgb(154, 129, 129);
     a {
       display: inline-block;
       img {
-        @include boxSize(5rem, 48px);
+        @include boxSize(80px, 3rem);
       }
     }
   }
@@ -20,12 +20,68 @@
     @include boxSize(100%, 100%);
     @include gridFlow(3, 2);
     // background-color: rgba(169, 168, 162, 0.175);
-    backdrop-filter: blur(0.625rem);
-    // z-index: 2;
-    border-left: 0.8rem solid rgba(221, 38, 38, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: -1;
+    border-left: 12.8px solid rgba(221, 38, 38, 0.1);
   }
   aside {
-    @include boxSize(80%, 100%);
+    @include boxSize(80%, auto);
     @include gridFlow(3, 2);
+    padding-left: 2.5rem;
+    padding-top: 2.5rem;
+    background-color: aqua;
+    .search-form {
+      @include boxSize(60%, 30%);
+      @include flexCenter(center, center);
+      input {
+        @include boxSize(100%, 3rem);
+        @include border();
+        @include fonstStyle(1.25rem, 700, 0.15rem, 1.5rem);
+        padding: 8px;
+        background-color: transparent;
+      }
+      input[type="search"] {
+        background-color: transparent;
+        @include border();
+        text-transform: capitalize;
+        border-bottom: 0.1875rem solid white;
+      }
+      #search-button {
+        @include boxSize(2rem, 2rem);
+        background-color: transparent;
+        @include border();
+        margin-left: -2.8125rem;
+        cursor: pointer;
+        img {
+          @include boxSize(100%, 100%);
+          filter: invert(0);
+        }
+      }
+    }
+    #weather-details {
+      @include boxSize(100%, 100%);
+      @include flexCenter(center, left);
+      margin-top: -300px;
+      flex-direction: column;
+      gap: 3rem;
+      .current-weather-text {
+        @include fonstStyle(1.25rem, 700, 0.05rem, 1.5rem);
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      .current-weather-details {
+        @include boxSize(100%, 100%);
+        @include fonstStyle(1.25rem, 700, 0.05rem, 1.5rem);
+        text-transform: capitalize;
+        // gap: 2rem;
+        .current-weather-info {
+          display: grid;
+          grid-template-columns: 1fr, repeat(2, 3rem);
+          // place-content: center;
+          // @include flexCenter(left, center);
+          // gap: 3rem;
+        }
+      }
+    }
   }
 }

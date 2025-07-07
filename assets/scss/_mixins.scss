@@ -5,13 +5,28 @@
 
 @mixin gridCenter($width, $height) {
   display: grid;
-  place-items: center;
+  place-content: center;
   width: $width;
   height: $height;
+}
+@mixin flexCenter($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
 }
 @mixin gridFlow($columns, $rows) {
   display: grid;
   grid-column: $columns;
   grid-row: $rows;
   gap: 1rem;
+}
+@mixin border() {
+  border: none;
+  outline: none;
+}
+@mixin fonstStyle($fontSize, $fontWeight, $letterSpacing, $lineHeight) {
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  letter-spacing: $letterSpacing;
+  line-height: $lineHeight;
 }
