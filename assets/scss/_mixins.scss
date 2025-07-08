@@ -14,11 +14,21 @@
   justify-content: $justify;
   align-items: $align;
 }
+@mixin verticalFlex($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
 @mixin gridFlow($columns, $rows) {
   display: grid;
   grid-column: $columns;
   grid-row: $rows;
   gap: 1rem;
+}
+@mixin grid($grid-columns, $gap) {
+  display: grid;
+  grid-template-columns: $grid-columns;
+  gap: $gap;
 }
 @mixin border() {
   border: none;
