@@ -1,42 +1,78 @@
-@mixin boxSize($width, $height) {
-  width: $width;
-  height: $height;
+@mixin boxSize($w, $h) {
+  width: $w;
+  height: $h;
 }
-
-@mixin gridCenter($width, $height) {
+@mixin gridFlow($col, $row) {
   display: grid;
-  place-content: center;
-  width: $width;
-  height: $height;
+  grid-template-columns: repeat($col, 1fr);
+  grid-template-rows: repeat($row, auto);
 }
-@mixin flexCenter($justify, $align) {
+@mixin flexCenter($jc, $ai) {
   display: flex;
-  justify-content: $justify;
-  align-items: $align;
+  justify-content: $jc;
+  align-items: $ai;
 }
 @mixin verticalFlex($gap) {
   display: flex;
   flex-direction: column;
   gap: $gap;
 }
-@mixin gridFlow($columns, $rows) {
-  display: grid;
-  grid-column: $columns;
-  grid-row: $rows;
-  gap: 1rem;
+@mixin fonstStyle($size, $weight, $ls, $lh) {
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $ls;
+  line-height: $lh;
 }
-@mixin grid($grid-columns, $gap) {
-  display: grid;
-  grid-template-columns: $grid-columns;
-  gap: $gap;
-}
-@mixin border() {
+@mixin border {
   border: none;
   outline: none;
 }
-@mixin fonstStyle($fontSize, $fontWeight, $letterSpacing, $lineHeight) {
-  font-size: $fontSize;
-  font-weight: $fontWeight;
-  letter-spacing: $letterSpacing;
-  line-height: $lineHeight;
-}
+
+// @mixin boxSize($width, $height) {
+//   width: $width;
+//   height: $height;
+// }
+
+// @mixin gridCenter($width, $height) {
+//   display: grid;
+//   place-content: center;
+//   width: $width;
+//   height: $height;
+// }
+// @mixin flexCenter($justify, $align) {
+//   display: flex;
+//   justify-content: $justify;
+//   align-items: $align;
+// }
+// @mixin verticalFlex($gap) {
+//   display: flex;
+//   flex-direction: column;
+//   gap: $gap;
+// }
+// @mixin gridFlow($columns, $rows) {
+//   display: grid;
+//   grid-column: $columns;
+//   grid-row: $rows;
+//   gap: 1rem;
+// }
+// @mixin grid($grid-columns, $gap) {
+//   display: grid;
+//   grid-template-columns: $grid-columns;
+//   gap: $gap;
+// }
+// @mixin border() {
+//   border: none;
+//   outline: none;
+// }
+// @mixin fonstStyle($fontSize, $fontWeight, $letterSpacing, $lineHeight) {
+//   font-size: $fontSize;
+//   font-weight: $fontWeight;
+//   letter-spacing: $letterSpacing;
+//   line-height: $lineHeight;
+// }
+
+// @mixin respond-to($breakpoint) {
+//   @media (max-width: map-get($breakpoints, $breakpoint)) {
+//     @content;
+//   }
+// }
