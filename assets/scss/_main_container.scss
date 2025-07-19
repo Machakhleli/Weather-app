@@ -1,3 +1,14 @@
+#background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+  filter: brightness(0.8); // optional: darkens background for readability
+}
+
 // Spinner
 #spinner {
   position: fixed;
@@ -26,83 +37,90 @@
   }
 }
 
-// Unit toggle
-#unit-toggle {
-  padding: 1rem;
-  color: white;
-  label {
-    font-size: 1rem;
-    input {
-      margin-right: 0.5rem;
-    }
-  }
-}
-
 // Main layout
 #main-container {
+  position: fixed;
+  z-index: 1;
   @include boxSize(100vw, 100vh);
   display: grid;
-  grid-template-columns: minmax(2rem, 1fr) clamp(40rem, 90vw, 50rem) minmax(
-      2rem,
-      1fr
-    );
+  grid-template-columns: 2rem 1fr 18rem;
   grid-template-rows: 2rem 1fr 2rem;
-  background-size: cover;
-  background-position: center;
 
   #main-section {
-    grid-column: 2 / 3;
     @include boxSize(100%, 100%);
-    @include gridFlow(2, 2);
-    a {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    img {
+      @include boxSize(9.375rem, 9rem);
+    }
+    #weather-main-info {
+      @include boxSize(60%, auto);
+      @include fontStyle(3rem, 900, 0.1rem, 3rem);
+      grid-row: 3;
+      place-items: center;
+      display: flex;
+      justify-content: space-around;
+      color: white;
+      .searched_location_weather_info {
+        @include verticalFlex(2rem);
+        align-items: center;
+        justify-content: center;
+      }
       img {
-        @include boxSize(80px, 3rem);
+        @include boxSize(100px, 100px);
       }
     }
   }
 
-  #blur-background {
-    grid-column: 2 / 3;
-    @include boxSize(100%, auto);
-    backdrop-filter: blur(10px);
-    z-index: -1;
-    border-left: 12.8px solid rgba(221, 38, 38, 0.1);
-  }
-
   aside {
-    grid-column: 2 / 3;
-    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    @include boxSize(35%, auto);
+    z-index: 5;
+    right: 0;
+    overflow-y: scroll;
     scrollbar-width: none;
+    overflow-x: hidden;
+    // scrollbar-width: none;
     @include verticalFlex(2rem);
-    padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.3);
+    padding: 3rem;
+    background-color: rgba(34, 33, 33, 0.3);
+    border-left: 5px solid rgba(255, 255, 255, 0.13);
 
     .search-form {
-      @include flexCenter(center, center);
+      @include flexCenter(left, center);
+      padding-bottom: 2rem;
       gap: 1rem;
       input[type="search"] {
-        @include boxSize(100%, 3rem);
+        @include boxSize(70%, 3rem);
         @include border();
-        @include fonstStyle(1rem, 600, 0.1rem, 0.5rem);
+        @include fontStyle(2rem, 800, 0.1rem, 0.5rem);
         background-color: transparent;
         text-transform: capitalize;
         border-bottom: 3px solid white;
         color: white;
+        // cursor: pointer;
       }
       #search-button {
         @include boxSize(2rem, 2rem);
         background: transparent;
+        border: none;
         cursor: pointer;
         img {
-          width: 100%;
-          height: 100%;
-          filter: invert(1);
+          @include boxSize(100%, 100);
+          filter: invert(0);
         }
       }
     }
 
     #weather-details {
-      @include verticalFlex(1.5rem);
+      @include verticalFlex(3rem);
+      @include fontStyle(1.3rem, 800, 0, 0);
       color: white;
       .current-weather-details {
         @include verticalFlex(1.5rem);
@@ -117,159 +135,41 @@
     }
 
     .long-term-weather-details {
+      @include boxSize(80%, auto);
       border-top: 2px solid white;
-      padding-top: 1rem;
+      padding-top: 3rem;
       color: white;
-      .week-days {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 1rem;
-        div {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 1rem;
-          border-radius: 1rem;
-          text-align: center;
-          h3 {
-            margin-bottom: 0.5rem;
-          }
-          img {
-            max-width: 60px;
-            margin-top: 0.5rem;
+      .next-days-weather-info {
+        @include verticalFlex(3rem);
+        .week-days {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+          gap: 1rem;
+          padding-top: 3rem;
+          @include verticalFlex(3rem);
+          div {
+            @include boxSize(80%, auto);
+            @include flexCenter(center, center);
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            padding-left: 3rem;
+            border-radius: 1rem;
+            &:hover {
+              cursor: pointer;
+              background-color: rgba(58, 57, 57, 0.158);
+            }
+
+            h3 {
+              margin-bottom: 0.5rem;
+            }
+            img {
+              max-width: 60px;
+              margin-top: 0.5rem;
+            }
           }
         }
       }
     }
   }
 }
-
-// #spinner {
-//   position: fixed;
-//   inset: 0;
-//   background: rgba(0, 0, 0, 0.4);
-//   z-index: 9999;
-//   display: grid;
-//   place-items: center;
-
-//   &.hidden {
-//     display: none;
-//   }
-
-//   .loader {
-//     @include boxSize(3rem, 3rem);
-//     border: 4px solid #fff;
-//     border-top-color: transparent;
-//     border-radius: 50%;
-//     animation: spin 0.8s linear infinite;
-//   }
-// }
-
-// @keyframes spin {
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
-
-// #main-container {
-//   @include boxSize(100vw, 100vh);
-//   @include gridCenter(100vw, 100vh);
-//   grid-template-columns: 64px 1fr 0.5fr;
-//   grid-template-rows: 64px 1fr 64px;
-//   position: relative;
-//   z-index: 1;
-//   // background-color: rgb(203, 207, 133);
-//   #main-section {
-//     @include boxSize(100%, 100%);
-//     @include gridFlow(2, 2);
-//     background-color: rgb(154, 129, 129);
-//     a {
-//       display: inline-block;
-//       img {
-//         @include boxSize(clamp(40px, 10vw, 80px), clamp(2rem, 5vw, 3rem));
-//       }
-//     }
-//   }
-//   #blur-background {
-//     position: relative;
-//     @include boxSize(100%, auto);
-//     @include gridFlow(3, 2);
-//     backdrop-filter: blur(10px);
-//     z-index: -1;
-//     border-left: 12.8px solid rgba(221, 38, 38, 0.1);
-//   }
-//   aside {
-//     @include boxSize(80%, auto);
-//     @include gridFlow(3, 2);
-//     overflow-y: scroll;
-//     scrollbar-width: none;
-//     padding-left: 2.5rem;
-//     background-color: aqua;
-//     .search-form {
-//       @include boxSize(80%, 30%);
-//       @include flexCenter(center, center);
-//       padding-top: 2rem;
-//       input[type="search"] {
-//         @include boxSize(100%, 3rem);
-//         @include border();
-//         @include fonstStyle(1rem, 600, 0.1rem, 0.5rem);
-//         background-color: transparent;
-//         text-transform: capitalize;
-//         border-bottom: 0.1875rem solid white;
-//       }
-//       #search-button {
-//         @include boxSize(2rem, 2rem);
-//         background-color: transparent;
-//         @include border();
-//         margin-left: -2.8125rem;
-//         cursor: pointer;
-//         img {
-//           @include boxSize(100%, 100%);
-//           filter: invert(0);
-//         }
-//       }
-//     }
-//     #weather-details {
-//       @include boxSize(100%, 100%);
-//       @include flexCenter(center, left);
-//       @include verticalFlex(4rem);
-//       .current-weather-details {
-//         @include boxSize(100%, 100%);
-//         @include fonstStyle(clamp(1rem, 1.5vw, 1.25rem), 700, 0.05rem, 1.5rem);
-//         @include gridFlow(1, 1);
-//         text-transform: capitalize;
-//         gap: 2rem;
-//         .current-weather-text-container {
-//           @include boxSize(100%, auto);
-//           .current-weather-text {
-//             @include fonstStyle(
-//               clamp(1rem, 1.5vw, 1.25rem),
-//               700,
-//               0.05rem,
-//               1.5rem
-//             );
-//             text-transform: uppercase;
-//           }
-//         }
-//         .current-weather-info {
-//           @include boxSize(100%, auto);
-//           @include grid(repeat(3, 1fr), 2rem);
-//         }
-//       }
-//     }
-//     .long-term-weather-details {
-//       @include boxSize(80%, 100%);
-//       @include verticalFlex(4rem);
-//       border-top: 3px solid white;
-//       .next-days-weather-info {
-//         @include boxSize(100%, auto);
-//         @include verticalFlex(4rem);
-//         .week-days {
-//           @include boxSize(100%, auto);
-//           div {
-//             @include grid(repeat(3, 1fr), 1rem);
-//             @include fonstStyle(1.5rem, 500, 0.1rem, 1.5rem);
-//           }
-//         }
-//       }
-//     }
-//   }
-// }

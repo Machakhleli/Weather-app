@@ -17,7 +17,7 @@
   flex-direction: column;
   gap: $gap;
 }
-@mixin fonstStyle($size, $weight, $ls, $lh) {
+@mixin fontStyle($size, $weight, $ls, $lh) {
   font-size: $size;
   font-weight: $weight;
   letter-spacing: $ls;
@@ -28,51 +28,8 @@
   outline: none;
 }
 
-// @mixin boxSize($width, $height) {
-//   width: $width;
-//   height: $height;
-// }
-
-// @mixin gridCenter($width, $height) {
-//   display: grid;
-//   place-content: center;
-//   width: $width;
-//   height: $height;
-// }
-// @mixin flexCenter($justify, $align) {
-//   display: flex;
-//   justify-content: $justify;
-//   align-items: $align;
-// }
-// @mixin verticalFlex($gap) {
-//   display: flex;
-//   flex-direction: column;
-//   gap: $gap;
-// }
-// @mixin gridFlow($columns, $rows) {
-//   display: grid;
-//   grid-column: $columns;
-//   grid-row: $rows;
-//   gap: 1rem;
-// }
-// @mixin grid($grid-columns, $gap) {
-//   display: grid;
-//   grid-template-columns: $grid-columns;
-//   gap: $gap;
-// }
-// @mixin border() {
-//   border: none;
-//   outline: none;
-// }
-// @mixin fonstStyle($fontSize, $fontWeight, $letterSpacing, $lineHeight) {
-//   font-size: $fontSize;
-//   font-weight: $fontWeight;
-//   letter-spacing: $letterSpacing;
-//   line-height: $lineHeight;
-// }
-
-// @mixin respond-to($breakpoint) {
-//   @media (max-width: map-get($breakpoints, $breakpoint)) {
-//     @content;
-//   }
-// }
+@mixin respond-to($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
