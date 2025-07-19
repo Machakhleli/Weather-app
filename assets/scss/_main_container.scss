@@ -58,7 +58,8 @@
     }
     #weather-main-info {
       @include boxSize(60%, auto);
-      @include fontStyle(3rem, 900, 0.1rem, 3rem);
+      @include fontStyle(clamp(1.2rem, 2vw, 2rem), 700, 0.1rem, 1.4);
+
       grid-row: 3;
       place-items: center;
       display: flex;
@@ -66,7 +67,7 @@
       color: white;
       padding-left: 5rem;
       h1 {
-        @include fontStyle(6rem, 600, 0.3rem, 2rem);
+        @include fontStyle(clamp(1.2rem, 8vw, 9.375rem), 700, 0.1rem, 1.4);
       }
       .searched_location_weather_info {
         @include verticalFlex(2rem);
@@ -103,7 +104,7 @@
       input[type="search"] {
         @include boxSize(70%, 3rem);
         @include border();
-        @include fontStyle(1rem, 600, 0.1rem, 0.5rem);
+        @include fontStyle(clamp(1.2rem, 2vw, 2rem), 700, 0.1rem, 1.4);
         background-color: transparent;
         text-transform: capitalize;
         border-bottom: 3px solid white;
@@ -124,7 +125,7 @@
 
     #weather-details {
       @include verticalFlex(3rem);
-      @include fontStyle(1.3rem, 800, 0, 0);
+      @include fontStyle(clamp(1.2rem, 2vw, 2rem), 700, 0.1rem, 1.4);
       color: white;
       .current-weather-details {
         @include verticalFlex(1.5rem);
@@ -147,9 +148,10 @@
         @include verticalFlex(3rem);
         .week-days {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));
           gap: 1rem;
-          padding-top: 3rem;
+          padding: 1rem 0;
+          // padding-top: 3rem;
           @include verticalFlex(3rem);
           div {
             @include boxSize(80%, auto);
