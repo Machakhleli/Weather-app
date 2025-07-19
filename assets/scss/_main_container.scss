@@ -62,15 +62,19 @@
       grid-row: 3;
       place-items: center;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       color: white;
+      padding-left: 5rem;
+      h1 {
+        @include fontStyle(6rem, 600, 0.3rem, 2rem);
+      }
       .searched_location_weather_info {
         @include verticalFlex(2rem);
         align-items: center;
         justify-content: center;
       }
       img {
-        @include boxSize(100px, 100px);
+        @include boxSize(200px, 200px);
       }
     }
   }
@@ -99,7 +103,7 @@
       input[type="search"] {
         @include boxSize(70%, 3rem);
         @include border();
-        @include fontStyle(2rem, 800, 0.1rem, 0.5rem);
+        @include fontStyle(1rem, 600, 0.1rem, 0.5rem);
         background-color: transparent;
         text-transform: capitalize;
         border-bottom: 3px solid white;
@@ -157,7 +161,7 @@
             border-radius: 1rem;
             &:hover {
               cursor: pointer;
-              background-color: rgba(58, 57, 57, 0.158);
+              background-color: rgba(75, 72, 72, 0.425);
             }
 
             h3 {
