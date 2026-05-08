@@ -6,7 +6,7 @@
   background-position: center;
   background-repeat: no-repeat;
   transition: background-image 0.5s ease-in-out;
-  filter: brightness(0.8); // optional: darkens background for readability
+  filter: brightness(0.8);
 }
 
 // Spinner
@@ -39,12 +39,14 @@
 
 // Main layout
 #main-container {
-  position: fixed;
+  position: relative; // Changed from fixed
   z-index: 1;
-  @include boxSize(100vw, 100vh);
+  width: 100%; // Changed from 100vw
+  min-height: 100vh; // Changed from fixed 100vh
   display: grid;
   grid-template-columns: 2rem 1fr 18rem;
   grid-template-rows: 2rem 1fr 2rem;
+  overflow-x: hidden;
 
   #main-section {
     @include boxSize(100%, 100%);
@@ -67,7 +69,7 @@
       color: white;
       padding-left: 5rem;
       h1 {
-        @include fontStyle(clamp(1.2rem, 8vw, 9.375rem), 700, 0.1rem, 1.4);
+        @include fontStyle(clamp(2rem, 8vw, 9.375rem), 700, 0.1rem, 1.4);
       }
       .searched_location_weather_info {
         @include verticalFlex(2rem);
@@ -87,11 +89,9 @@
     right: 0;
     @include boxSize(35%, auto);
     z-index: 5;
-    right: 0;
     overflow-y: scroll;
     scrollbar-width: none;
     overflow-x: hidden;
-    // scrollbar-width: none;
     @include verticalFlex(2rem);
     padding: 3rem;
     background-color: rgba(34, 33, 33, 0.3);
@@ -109,7 +109,6 @@
         text-transform: capitalize;
         border-bottom: 3px solid white;
         color: white;
-        // cursor: pointer;
       }
       #search-button {
         @include boxSize(2rem, 2rem);
@@ -117,7 +116,7 @@
         border: none;
         cursor: pointer;
         img {
-          @include boxSize(100%, 100);
+          @include boxSize(100%, 100%);
           filter: invert(0);
         }
       }
@@ -151,10 +150,9 @@
           grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));
           gap: 1rem;
           padding: 1rem 0;
-          // padding-top: 3rem;
           @include verticalFlex(3rem);
           div {
-            @include boxSize(80%, auto);
+            @include boxSize(90%, auto);
             @include flexCenter(center, center);
             gap: 1.5rem;
             background: rgba(255, 255, 255, 0.1);
